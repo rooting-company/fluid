@@ -52,6 +52,8 @@ class SolidifierTest {
         properties.add(new LiquidProperty("person.email", "brunoluisncosta@gmail.com"));
         properties.add(new LiquidProperty("person.phones[1].number", "+55 83 32334329"));
         properties.add(new LiquidProperty("person.address.country", "Brazil"));
+        properties.add(new LiquidProperty("person.recursiveTest.test", "Teste Recursive 1\\o/"));
+        properties.add(new LiquidProperty("person.recursiveTest.felipe.name", "Recursividade e bom kraio"));
         LiquidObject liquidObject = LiquidObject.create(properties);
         Solidifier<Person> solidifier = new Solidifier<>(new Person(), liquidObject);
         Person person = solidifier.solidify();

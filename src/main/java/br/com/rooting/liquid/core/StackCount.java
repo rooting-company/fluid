@@ -1,30 +1,29 @@
 package br.com.rooting.liquid.core;
 
-public class StackCount {
+class StackCount {
+
+    private static final Integer MIN_VALUE = 0;
 
     private Integer max;
 
-    private Integer actual;
+    private Integer current;
 
-    StackCount(Integer max, Integer actual) {
+    StackCount(Integer max) {
         this.max = max;
-        this.actual = actual;
+        this.current = MIN_VALUE;
     }
 
     void increment() {
-        this.actual++;
-
-        if (this.actual > max) {
+        Integer newActual = this.current + 1;
+        if (newActual > max) {
             throw new NotFilledObjectException();
         }
+        this.current = newActual;
     }
 
     void decrement() {
-        this.actual--;
-    }
-
-    public boolean isEmpty() {
-        return this.actual <= 0;
+        if (this.current > MIN_VALUE)
+            this.current--;
     }
 
 }

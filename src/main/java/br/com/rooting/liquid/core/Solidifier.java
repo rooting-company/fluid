@@ -51,6 +51,7 @@ class Solidifier<T> {
         this.liquidObject = null;
         this.keyBuilder = null;
         this.object = null;
+        this.tracker = null;
     }
 
     private <Z> Z loadProperties(Z target) {

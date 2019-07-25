@@ -2,13 +2,23 @@ package br.com.rooting.liquid;
 
 public class RecursiveTest {
 
-    private Person person;
+    private String test;
 
-    public Person getPerson() {
-        return person;
+    private Person felipe;
+
+    public Person getFelipe() {
+        return felipe;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setFelipe(Person felipe) {
+        this.felipe = felipe;
+    }
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
     }
 }

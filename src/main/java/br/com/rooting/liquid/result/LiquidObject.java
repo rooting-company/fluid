@@ -1,9 +1,11 @@
 package br.com.rooting.liquid.result;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Collections.unmodifiableMap;
 import static java.util.stream.Collectors.toMap;
 
 public class LiquidObject {
@@ -15,9 +17,8 @@ public class LiquidObject {
     }
 
     public static LiquidObject create(List<LiquidProperty> properties) {
-        Map<String, LiquidProperty> proprtiesMap = properties.stream()
-                                                            .collect(toMap(LiquidProperty::getKey, p -> p));
-        return new LiquidObject(proprtiesMap);
+        Map<String, LiquidProperty> map = properties.stream().collect(toMap(LiquidProperty::getKey, p -> p));
+        return new LiquidObject(unmodifiableMap(map));
     }
 
     public LiquidProperty findProperty(String key) {

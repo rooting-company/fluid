@@ -1,5 +1,6 @@
 package br.com.rooting.liquid;
 
+import br.com.rooting.liquid.mapping.Alias;
 import br.com.rooting.liquid.mapping.Ignore;
 
 import java.time.LocalDate;
@@ -7,33 +8,40 @@ import java.util.List;
 
 public class Person {
 
+//    @Ignore
     private String name;
 
+//    @Ignore
     private Gender gender;
 
+    @Alias("dataAniversario")
     private LocalDate bithDate;
 
+    @Alias(value = "bruno.cpf", root = true)
     private String document;
 
+//    @Ignore
     private Address address;
 
+//    @Ignore
     private List<Phone> phones;
 
+//    @Ignore
     private String email;
 
-//    @Ignore
+    @Ignore
     private Person father;
 
-//    @Ignore
+    @Ignore
     private Person mother;
 
-//    @Ignore
+    @Ignore
     private Person spouse;
 
-//    @Ignore
+    @Ignore
     private List<Person> offspring;
 
-//    @Ignore
+    @Ignore
     private RecursiveTest recursiveTest;
 
     public String getName() {

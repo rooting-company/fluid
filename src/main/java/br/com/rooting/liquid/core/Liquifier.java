@@ -1,10 +1,10 @@
 package br.com.rooting.liquid.core;
 
+import br.com.rooting.liquid.mapping.Ignore;
 import br.com.rooting.liquid.result.LiquidObject;
 import br.com.rooting.liquid.result.LiquidProperty;
 import br.com.rooting.liquid.util.FinalType;
 import br.com.rooting.liquid.util.GenericsUtils;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -129,7 +129,7 @@ class Liquifier {
             return f.get(target);
 
         } catch (IllegalAccessException e) {
-            throw new FailToSolidifyException(e);
+            throw new FailToLiquifyException(e);
         }
     }
 

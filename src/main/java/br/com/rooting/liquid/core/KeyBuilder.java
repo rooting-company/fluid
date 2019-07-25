@@ -9,13 +9,14 @@ import java.util.Deque;
 
 class KeyBuilder {
 
-    private String key;
+    private Deque<String> keyDeque;
 
     private Deque<Integer> orderDeque;
 
     KeyBuilder(Object object) {
-        this.key = getPrefix(object);
+        this.keyDeque = new ArrayDeque<>();
         this.orderDeque = new ArrayDeque<>();
+        this.keyDeque.push(getPrefix(object));
     }
 
     private String getPrefix(Object object) {
@@ -27,7 +28,7 @@ class KeyBuilder {
     }
 
     KeyBuilder next(Field field) {
-        this.key = this.updateKey(this.key, field);
+        this.keyDeque.push(this.updateKey(this.keyDeque.peek(), field));
         return this;
     }
 
@@ -47,40 +48,35 @@ class KeyBuilder {
     }
 
     KeyBuilder previous() {
-        this.key = this.removeLastPart(this.key);
+        this.keyDeque.poll();
         return this;
     }
 
-    private String removeLastPart(String key) {
-        int lastDotIndex = key.lastIndexOf('.');
-
-        if (lastDotIndex> 0)
-            return key.substring(0, lastDotIndex);
-
-        return key;
-    }
-
     String build() {
-        return this.key;
+        return this.keyDeque.peek();
     }
 
     KeyBuilder incrementOrder() {
         Integer lastOrder = this.orderDeque.poll();
         Integer newOrder = lastOrder + 1;
         this.orderDeque.push(newOrder);
-        this.key = this.key.replaceFirst("\\[\\d\\]$", "[" + newOrder + "]");
+
+        String key = this.keyDeque.poll();
+        key = key.replaceFirst("\\[\\d\\]$", "[" + newOrder + "]");
+        this.keyDeque.push(key);
         return this;
     }
 
     KeyBuilder nextOrder() {
         this.orderDeque.push(0);
-        this.key = this.key.concat("[" + 0 + "]");
+        String key = this.keyDeque.poll();
+        key = key.concat("[" + 0 + "]");
+        this.keyDeque.push(key);
         return this;
     }
 
     KeyBuilder previousOrder() {
         this.orderDeque.poll();
-        this.key = this.key.replaceFirst("\\[\\d\\]$", "");
         return this;
     }
 
