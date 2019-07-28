@@ -14,7 +14,7 @@ public class Transformer {
     public LiquidObject liquify(Object object) {
         assert object != null;
 
-        Liquifier liquifier = new Liquifier(object);
+        Liquifier liquifier = new Liquifier(object, config);
         return liquifier.liquify();
    }
 
@@ -22,7 +22,7 @@ public class Transformer {
         assert type != null;
         assert liquidObject != null;
 
-        Solidifier<T> solidifier = new Solidifier<>(type, liquidObject);
+        Solidifier<T> solidifier = new Solidifier<>(type, liquidObject, config);
         return solidifier.solidify();
    }
 

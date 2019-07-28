@@ -15,4 +15,9 @@ public final class GenericsUtils {
         return Object.class;
     }
 
+    public static boolean isParameterizedTypeCompatible(Class<?> type, Class<?> targetType) {
+//        if(type.getGenericInterfaces()[0] instanceof ParameterizedType)  {
+        return true;
+    }
+
 }
