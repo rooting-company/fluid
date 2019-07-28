@@ -1,5 +1,6 @@
 package br.com.rooting.liquid;
 
+import br.com.rooting.liquid.converter.annotation.Converter;
 import br.com.rooting.liquid.mapping.Alias;
 import br.com.rooting.liquid.mapping.Ignore;
 
@@ -8,25 +9,21 @@ import java.util.List;
 
 public class Person {
 
-//    @Ignore
     private String name;
 
-//    @Ignore
     private Gender gender;
 
     @Alias("dataAniversario")
-    private LocalDate bithDate;
+    private LocalDate birthDate;
 
     @Alias(value = "bruno.cpf", root = true)
     private String document;
 
-//    @Ignore
     private Address address;
 
-//    @Ignore
+    @Converter(liquify = PhoneConverter.class, solidify = PhoneConverter.class)
     private List<Phone> phones;
 
-//    @Ignore
     private String email;
 
     @Ignore
@@ -52,12 +49,12 @@ public class Person {
         this.name = name;
     }
 
-    public LocalDate getBithDate() {
-        return bithDate;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setBithDate(LocalDate bithDate) {
-        this.bithDate = bithDate;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getDocument() {

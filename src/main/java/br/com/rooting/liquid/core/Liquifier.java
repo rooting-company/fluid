@@ -68,20 +68,22 @@ class Liquifier {
                 if (propertyValue == null)
                     continue;
 
+                Class<?> fieldType = f.getType();
+
                 LiquifyConverter<Object> converter = this.getCustomConverter(f);
-                if (converter != null && !Collection.class.isAssignableFrom(f.getType())) {
+                if (converter != null && !Collection.class.isAssignableFrom(fieldType)) {
                     this.extracWithCustomConverter(f, propertyValue, converter);
                     continue;
                 }
 
                 if (isFinalType(f)) {
-                    FinalType finalType = getFindType(f.getType());
+                    FinalType finalType = getFindType(fieldType);
                     this.extractFromFinalType(finalType, propertyValue);
 
-                } else if (Enum.class.isAssignableFrom(object.getClass())) {
-                    this.extractFromEnum((Enum<?>) object);
+                } else if (fieldType.isEnum()) {
+                    this.extractFromEnum((Enum<?>) propertyValue);
 
-                } else if (List.class.isAssignableFrom(f.getType())) {
+                } else if (List.class.isAssignableFrom(fieldType)) {
                     this.extractFromList((List<?>) propertyValue, f, converter);
 
                 } else {

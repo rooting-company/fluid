@@ -3,6 +3,7 @@ package br.com.rooting.liquid.core;
 import br.com.rooting.liquid.Address;
 import br.com.rooting.liquid.Person;
 import br.com.rooting.liquid.Phone;
+import br.com.rooting.liquid.config.ConfigBuilder;
 import br.com.rooting.liquid.result.LiquidObject;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,7 @@ class LiquifierTest {
         bruno.setName("Bruno Costa");
         bruno.setGender(MALE);
         bruno.setDocument("08043042039");
-        bruno.setBithDate(LocalDate.of(1992, 12, 11));
+        bruno.setBirthDate(LocalDate.of(1992, 12, 11));
 
         Address brunoAddress = new Address("Avenida 11 de Outubro",
                                         "Braz",
@@ -45,7 +46,7 @@ class LiquifierTest {
         father.setName("Luís Antõnio Fialho da Costa");
         father.setGender(MALE);
         father.setDocument("49258128079");
-        father.setBithDate(LocalDate.of(1962, 12, 10));
+        father.setBirthDate(LocalDate.of(1962, 12, 10));
 
         Address fatherAddress = new Address("Rua Eduardo Hugo Luis do Nascimento",
                                             "Costa e Silva",
@@ -65,7 +66,7 @@ class LiquifierTest {
         mother.setName("Maria de Fatima Dias");
         mother.setGender(FAMALE);
         mother.setDocument("99522720062");
-        mother.setBithDate(LocalDate.of(1958, 12, 13));
+        mother.setBirthDate(LocalDate.of(1958, 12, 13));
 
         Address motherAddress = new Address("Rua Eduardo Hugo Luis do Nascimento",
                                             "Costa e Silva",
@@ -81,7 +82,8 @@ class LiquifierTest {
 
         bruno.setMother(mother);
 
-        Liquifier liquifier = new Liquifier(bruno);
+        ConfigBuilder configBuilder = new ConfigBuilder();
+        Liquifier liquifier = new Liquifier(bruno, configBuilder.build());
         LiquidObject liquid = liquifier.liquify();
         System.out.print(formatAsJavaDeclaration(liquid));
         liquid.asList().forEach(System.out::println);

@@ -83,18 +83,18 @@ class Solidifier<T> {
                     if (value != null)
                         continue;
 
+                    Class<?> fieldType = f.getType();
+
                     SolidifyConverter<Object> converter = this.getCustomConverter(f);
-                    if (converter != null && !Collection.class.isAssignableFrom(f.getType())) {
+                    if (converter != null && !Collection.class.isAssignableFrom(fieldType)) {
                         this.loadWithCustomConverter(target, f, value, converter);
                         continue;
                     }
 
-                    Class<?> fieldType = f.getType();
-
                     if (ReflectionUtils.isFinalType(fieldType)) {
                         value = this.getSimplePropertyValue(fieldType);
 
-                    } else if (Enum.class.isAssignableFrom(fieldType)) {
+                    } else if (fieldType.isEnum()) {
                         value = this.getEnumPropertyValue((Class<Enum>) fieldType);
 
                     } else if (List.class.isAssignableFrom(fieldType)) {

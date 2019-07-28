@@ -4,7 +4,7 @@ public class Address {
 
     private String street;
 
-    private String distric;
+    private String district;
 
     private String number;
 
@@ -16,9 +16,9 @@ public class Address {
 
     public Address() {}
 
-    public Address(String street, String distric, String number, String city, String state, String country) {
+    public Address(String street, String district, String number, String city, String state, String country) {
         this.street = street;
-        this.distric = distric;
+        this.district = district;
         this.number = number;
         this.city = city;
         this.state = state;
@@ -33,12 +33,12 @@ public class Address {
         this.street = street;
     }
 
-    public String getDistric() {
-        return distric;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setDistric(String distric) {
-        this.distric = distric;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     public String getNumber() {

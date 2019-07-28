@@ -1,11 +1,9 @@
 package br.com.rooting.liquid.converter;
 
-import br.com.rooting.liquid.result.LiquidProperty;
-
-import java.util.Map;
+import br.com.rooting.liquid.result.LiquidObject;
 
 public interface SolidifyConverter<T> {
 
-    T converter(T current, String key, Map<String, LiquidProperty> properties);
+    T convertToSolid(T current, String key, LiquidObject liquidObject);
 
 }
