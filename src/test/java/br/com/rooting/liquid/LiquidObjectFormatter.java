@@ -1,7 +1,7 @@
 package br.com.rooting.liquid;
 
-import br.com.rooting.liquid.result.LiquidObject;
-import br.com.rooting.liquid.result.LiquidProperty;
+import br.com.rooting.liquid.model.LiquidObject;
+import br.com.rooting.liquid.model.LiquidProperty;
 
 public final class LiquidObjectFormatter {
 

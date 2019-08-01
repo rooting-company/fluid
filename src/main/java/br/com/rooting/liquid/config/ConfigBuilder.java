@@ -14,6 +14,8 @@ public class ConfigBuilder {
 
     private boolean replaceNotNullValues = false;
 
+    private boolean liquifyNullValues = false;
+
     private boolean enableCache = true;
 
     private List<LiquifyConverter<?>> liquifyConverters = new ArrayList<>();
@@ -29,6 +31,11 @@ public class ConfigBuilder {
 
     public ConfigBuilder withReplaceNotNullValues(boolean value) {
         this.replaceNotNullValues = value;
+        return this;
+    }
+
+    public ConfigBuilder withLiquifyNullValues(boolean value) {
+        this.liquifyNullValues = value;
         return this;
     }
 
@@ -68,6 +75,7 @@ public class ConfigBuilder {
         ConverterRepository converterRepository = new ConverterRepository(liquifyConverters, solidifyConverters);
         return new Config(enableCyclicReference,
                           replaceNotNullValues,
+                          liquifyNullValues,
                           enableCache,
                           converterRepository);
     }

@@ -4,7 +4,8 @@ import br.com.rooting.liquid.Address;
 import br.com.rooting.liquid.Person;
 import br.com.rooting.liquid.Phone;
 import br.com.rooting.liquid.config.ConfigBuilder;
-import br.com.rooting.liquid.result.LiquidObject;
+import br.com.rooting.liquid.core.liquid.Liquifier;
+import br.com.rooting.liquid.model.LiquidObject;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

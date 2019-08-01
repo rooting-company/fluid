@@ -1,12 +1,6 @@
 package br.com.rooting.liquid.util;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 public final class ReflectionUtils {
 
@@ -18,7 +12,7 @@ public final class ReflectionUtils {
 
     public static boolean isFinalType(Class<?> type) {
         try {
-            FinalType.getFindType(type);
+            FinalType.getFinalType(type);
         } catch (IllegalArgumentException e) {
             return false;
         }

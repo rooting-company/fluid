@@ -1,4 +1,4 @@
-package br.com.rooting.liquid.result;
+package br.com.rooting.liquid.model;
 
 public class LiquidProperty {
 

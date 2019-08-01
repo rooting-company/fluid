@@ -1,4 +1,6 @@
-package br.com.rooting.liquid.core;
+package br.com.rooting.liquid.core.solid.tracker;
+
+import br.com.rooting.liquid.core.solid.exception.NotFilledObjectException;
 
 class StackCount {
 

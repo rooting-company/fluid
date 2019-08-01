@@ -58,7 +58,7 @@ public enum FinalType {
         return this.formatStringFunction.apply(object);
     }
 
-    public static FinalType getFindType(Class<?> type) {
+    public static FinalType getFinalType(Class<?> type) {
         return Stream.of(FinalType.values())
                         .filter(finalType -> finalType.hasTheSameType(type))
                         .findFirst()

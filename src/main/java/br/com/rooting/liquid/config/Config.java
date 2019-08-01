@@ -8,17 +8,21 @@ public final class Config {
 
     private final boolean replaceNotNullValues;
 
+    private final boolean liquifyNullvalues;
+
     private final boolean enableCache;
 
     private final ConverterRepository converterRepository;
 
     Config(boolean enableCyclicReference,
            boolean replaceNotNullValues,
+           boolean liquifyNullvalues,
            boolean enableCache,
            ConverterRepository converterRepository) {
 
         this.enableCyclicReference = enableCyclicReference;
         this.replaceNotNullValues = replaceNotNullValues;
+        this.liquifyNullvalues = liquifyNullvalues;
         this.enableCache = enableCache;
         this.converterRepository = converterRepository;
     }
@@ -29,6 +33,10 @@ public final class Config {
 
     public boolean isReplaceNotNullValues() {
         return replaceNotNullValues;
+    }
+
+    public boolean isLiquifyNullvalues() {
+        return liquifyNullvalues;
     }
 
     public boolean isEnableCache() {

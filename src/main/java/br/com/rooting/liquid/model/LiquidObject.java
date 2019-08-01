@@ -1,4 +1,4 @@
-package br.com.rooting.liquid.result;
+package br.com.rooting.liquid.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +16,12 @@ public class LiquidObject {
     }
 
     public static LiquidObject create(List<LiquidProperty> properties) {
-        Map<String, LiquidProperty> map = properties.stream().collect(toMap(LiquidProperty::getKey, p -> p));
+        Map<String, LiquidProperty> map = properties.stream()
+                                                    .collect(toMap(LiquidProperty::getKey, p -> p));
+
         return new LiquidObject(unmodifiableMap(map));
     }
+
 
     public LiquidProperty findProperty(String key) {
         return propertiesMap.get(key);

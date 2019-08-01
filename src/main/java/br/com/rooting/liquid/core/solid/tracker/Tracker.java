@@ -1,13 +1,13 @@
-package br.com.rooting.liquid.core;
+package br.com.rooting.liquid.core.solid.tracker;
 
 import java.util.HashMap;
 import java.util.Map;
 
-class Tracker {
+public class Tracker {
 
     private Map<Class<?>, StackCount> stack = new HashMap<>();
 
-    void track(Object object) {
+    public void track(Object object) {
         Class<?> type = object.getClass();
         StackCount count = stack.get(type);
 
@@ -18,7 +18,7 @@ class Tracker {
         stack.put(type, new StackCount(1));
     }
 
-    void untrack(Object object) {
+    public void untrack(Object object) {
         Class<?> type = object.getClass();
         StackCount count = stack.get(type);
         count.decrement();

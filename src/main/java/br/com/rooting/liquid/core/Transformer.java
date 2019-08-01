@@ -1,7 +1,9 @@
 package br.com.rooting.liquid.core;
 
 import br.com.rooting.liquid.config.Config;
-import br.com.rooting.liquid.result.LiquidObject;
+import br.com.rooting.liquid.core.liquid.Liquifier;
+import br.com.rooting.liquid.core.solid.Solidifier;
+import br.com.rooting.liquid.model.LiquidObject;
 
 public class Transformer {
 

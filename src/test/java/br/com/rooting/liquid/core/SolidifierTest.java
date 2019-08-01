@@ -2,8 +2,9 @@ package br.com.rooting.liquid.core;
 
 import br.com.rooting.liquid.Person;
 import br.com.rooting.liquid.config.ConfigBuilder;
-import br.com.rooting.liquid.result.LiquidObject;
-import br.com.rooting.liquid.result.LiquidProperty;
+import br.com.rooting.liquid.core.solid.Solidifier;
+import br.com.rooting.liquid.model.LiquidObject;
+import br.com.rooting.liquid.model.LiquidProperty;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

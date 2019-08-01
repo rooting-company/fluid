@@ -7,13 +7,13 @@ import java.lang.reflect.Field;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-class KeyBuilder {
+public class KeyBuilder {
 
     private Deque<String> keyDeque;
 
     private Deque<Integer> orderDeque;
 
-    KeyBuilder(Object object) {
+    public KeyBuilder(Object object) {
         this.keyDeque = new ArrayDeque<>();
         this.orderDeque = new ArrayDeque<>();
         this.keyDeque.push(getPrefix(object));
@@ -27,7 +27,7 @@ class KeyBuilder {
         return StringUtils.uncapitalize(object.getClass().getSimpleName());
     }
 
-    KeyBuilder next(Field field) {
+    public KeyBuilder next(Field field) {
         this.keyDeque.push(this.updateKey(this.keyDeque.peek(), field));
         return this;
     }
@@ -47,16 +47,16 @@ class KeyBuilder {
         return key.concat(field.getName());
     }
 
-    KeyBuilder previous() {
+    public KeyBuilder previous() {
         this.keyDeque.poll();
         return this;
     }
 
-    String build() {
+    public String build() {
         return this.keyDeque.peek();
     }
 
-    KeyBuilder incrementOrder() {
+    public KeyBuilder incrementOrder() {
         Integer lastOrder = this.orderDeque.poll();
         Integer newOrder = lastOrder + 1;
         this.orderDeque.push(newOrder);
@@ -67,7 +67,7 @@ class KeyBuilder {
         return this;
     }
 
-    KeyBuilder nextOrder() {
+    public KeyBuilder nextOrder() {
         this.orderDeque.push(0);
         String key = this.keyDeque.poll();
         key = key.concat("[" + 0 + "]");
@@ -75,7 +75,7 @@ class KeyBuilder {
         return this;
     }
 
-    KeyBuilder previousOrder() {
+    public KeyBuilder previousOrder() {
         this.orderDeque.poll();
         return this;
     }

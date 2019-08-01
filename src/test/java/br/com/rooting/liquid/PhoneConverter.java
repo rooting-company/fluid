@@ -2,8 +2,8 @@ package br.com.rooting.liquid;
 
 import br.com.rooting.liquid.converter.LiquifyConverter;
 import br.com.rooting.liquid.converter.SolidifyConverter;
-import br.com.rooting.liquid.result.LiquidObject;
-import br.com.rooting.liquid.result.LiquidProperty;
+import br.com.rooting.liquid.model.LiquidObject;
+import br.com.rooting.liquid.model.LiquidProperty;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
